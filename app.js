@@ -47,12 +47,19 @@ Store.prototype.createCookiesList = function() {
     }
 };
 
+const activateStore = function(object) {
+    object.populateCookiesArray();
+    object.createCookiesList();
+};
+
 const storePDX = new Store('PDX Airport', 23, 65, 6.3);
-
 const storePioneer = new Store('Pioneer Square', 3, 24, 1.2);
-
 const storePowells = new Store('Powell\'s', 11, 38, 3.7);
-
 const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
-
 const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
+
+activateStore(storePDX);
+activateStore(storePioneer);
+activateStore(storePowells);
+activateStore(storeStJohns);
+activateStore(storeWaterfront);
