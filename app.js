@@ -7,7 +7,7 @@ let storePDX = {
     minCust: 23,
     maxCust: 65,
     avgCookiesPerCust: 6.3,
-    cookiesPurchasedPerHour: [],
+    estCookiesPerHour: [],
     calcCookiesHour: function () {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
@@ -21,7 +21,7 @@ let storePioneer = {
     minCust: 3,
     maxCust: 24,
     avgCookiesPerCust: 1.2,
-    cookiesPurchasedPerHour: [],
+    estCookiesPerHour: [],
     calcCookiesHour: function () {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
@@ -35,7 +35,7 @@ let storePowells = {
     minCust: 11,
     maxCust: 38,
     avgCookiesPerCust: 3.7,
-    cookiesPurchasedPerHour: [],
+    estCookiesPerHour: [],
     calcCookiesHour: function () {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
@@ -49,7 +49,7 @@ let storeStJohns = {
     minCust: 20,
     maxCust: 38,
     avgCookiesPerCust: 2.3,
-    cookiesPurchasedPerHour: [],
+    estCookiesPerHour: [],
     calcCookiesHour: function () {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
@@ -63,7 +63,7 @@ let storeWaterfront = {
     minCust: 2,
     maxCust: 16,
     avgCookiesPerCust: 4.6,
-    cookiesPurchasedPerHour: [],
+    estCookiesPerHour: [],
     calcCookiesHour: function () {
         let min = Math.ceil(this.minCust);
         let max = Math.floor(this.maxCust);
@@ -76,11 +76,11 @@ const createCookiesList = function(object) {
     let totalCookies = 0;
 
     for (let i = 0; i < 15; i++) {
-        object.cookiesPurchasedPerHour[i] = object.calcCookiesHour();
-        totalCookies += object.cookiesPurchasedPerHour[i];
+        object.estCookiesPerHour[i] = object.calcCookiesHour();
+        totalCookies += object.estCookiesPerHour[i];
     }
 
-    object.cookiesPurchasedPerHour.push(totalCookies);
+    object.estCookiesPerHour.push(totalCookies);
 
     const cookieSection = document.getElementById('cookiesection');
 
@@ -93,9 +93,9 @@ const createCookiesList = function(object) {
 
     const liArray = [];
     for (let i = 0; i < 16; i++) {
-        liArray.push(object.cookiesPurchasedPerHour[i]);
+        liArray.push(object.estCookiesPerHour[i]);
         const newLi = document.createElement('li');
-        newLi.textContent = hours[i] + ': ' + object.cookiesPurchasedPerHour[i] + ' cookies';
+        newLi.textContent = hours[i] + ': ' + object.estCookiesPerHour[i] + ' cookies';
         newUl.appendChild(newLi);
     }
 }
