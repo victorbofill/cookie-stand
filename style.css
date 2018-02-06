@@ -13,14 +13,17 @@ header img {
     position: absolute;
     margin: 0 auto;
     left: -500px;
-<<<<<<< Updated upstream
-    top: -30px;
-=======
     top: -5px;
->>>>>>> Stashed changes
 }
 
-.header-links {
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 4em;
+    padding-top: .25em;
+}
+
+ul.header-links {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,12 +32,6 @@ header img {
 .header-links li {
     list-style-type: none;
     margin: 0 1em;
-}
-
-h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 4em;
 }
 
 li {
