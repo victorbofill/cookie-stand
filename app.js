@@ -28,28 +28,25 @@ Store.prototype.populateCookiesArray = function() {
     this.estCookiesPerHour.push(totalCookies);
 };
 
-Store.prototype.createCookiesList = function() {
-    const cookieSection = document.getElementById('cookiesection');
+Store.prototype.createCookieTable = function () {
+    const cookieSection = document.getElementById('cookie-table');
+    const newTableRow = document.createElement('tr');
+    cookieSection.appendChild(newTableRow);
 
-    const newStoreName = document.createElement('p');
-    newStoreName.textContent = this.storeName;
-    cookieSection.appendChild(newStoreName);
+    let newCell = document.createElement('td');
+    newTableRow.appendChild(newCell);
+    newCell.textContent = this.storeName;
 
-    const newUl = document.createElement('ul');
-    cookieSection.appendChild(newUl);
-
-    const liArray = [];
-    for (let i = 0; i < 16; i++) {
-        liArray.push(this.estCookiesPerHour[i]);
-        const newLi = document.createElement('li');
-        newLi.textContent = hours[i] + ': ' + this.estCookiesPerHour[i] + ' cookies';
-        newUl.appendChild(newLi);
+    for (let i = 0; i < this.estCookiesPerHour.length; i++) {
+        newCell = document.createElement('td');
+        newTableRow.appendChild(newCell);
+        newCell.textContent = this.estCookiesPerHour[i];
     }
 };
 
 const activateStore = function(object) {
     object.populateCookiesArray();
-    object.createCookiesList();
+    object.createCookieTable();
 };
 
 const storePDX = new Store('PDX Airport', 23, 65, 6.3);
@@ -58,8 +55,8 @@ const storePowells = new Store('Powell\'s', 11, 38, 3.7);
 const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
 const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 
-// activateStore(storePDX);
-// activateStore(storePioneer);
-// activateStore(storePowells);
-// activateStore(storeStJohns);
-// activateStore(storeWaterfront);
+activateStore(storePDX);
+activateStore(storePioneer);
+activateStore(storePowells);
+activateStore(storeStJohns);
+activateStore(storeWaterfront);
