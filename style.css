@@ -13,7 +13,11 @@ header img {
     position: absolute;
     margin: 0 auto;
     left: -500px;
+<<<<<<< Updated upstream
     top: -30px;
+=======
+    top: -5px;
+>>>>>>> Stashed changes
 }
 
 .header-links {
