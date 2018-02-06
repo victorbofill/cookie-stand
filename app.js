@@ -14,7 +14,7 @@ const createTable = function() {
     table.setAttribute('id', 'cookie-table');
 };
 
-const buildTableHeader = function() {
+const createTableHeader = function() {
     const table = document.getElementById('cookie-table');
     const tableHead = document.createElement('thead');
     table.appendChild(tableHead);
@@ -29,7 +29,7 @@ const buildTableHeader = function() {
     }
 };
 
-const buildTableFooter = function () {
+const createTableFooter = function () {
     const table = document.getElementById('cookie-table');
     const tableFoot = document.createElement('tfoot');
     table.appendChild(tableFoot);
@@ -101,13 +101,13 @@ const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 
 const buildTable = function() {
     createTable();
-    buildTableHeader();
+    createTableHeader();
     activateStore(storePDX);
     activateStore(storePioneer);
     activateStore(storePowells);
     activateStore(storeStJohns);
     activateStore(storeWaterfront);
-    buildTableFooter();    
+    createTableFooter();
 };
 
 buildTable();
