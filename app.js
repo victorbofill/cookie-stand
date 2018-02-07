@@ -76,7 +76,7 @@ Store.prototype.populateCookiesArray = function() {
 Store.prototype.calcEmployeesHour = function() {
     for (let i = 1; i < this.employees.length ; i++) {
         const calcEmployees = Math.ceil(this.estCookiesPerHour[(i - 1)] / 20);
-        if ((calcEmployees - 2) > 2) {
+        if (calcEmployees > 2) {
             this.employees[i] = calcEmployees;
         }
     }
