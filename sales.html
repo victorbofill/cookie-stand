@@ -7,39 +7,31 @@
 
     <body>
         <main>
-            <section id="cookie-section">
-            </section>
-
             <section>
                     <form>
                         <fieldset>
                             <legend>New Store</legend>
-    
+
                             <label>Store Location</label>
                             <input type="text" name="storelocation" required/>
 
-                            <p id="locationerror"></p>
-    
-                            <label>Minimum Customers (Must be a number)</label>
+                            <label>Minimum Customers</label>
                             <input type="number" name="mincust" required/>
 
-                            <p id="mincusterror"></p>
-
-                            <label>Maximum Customers (Must be a number)</label>
+                            <label>Maximum Customers</label>
                             <input type="number" name="maxcust" required />
 
-                            <p id="maxcusterror"></p>
-
-                            <label>Avg. Cookies Per Customer (Must be a number)</label>
+                            <label>Avg. Cookies Per Customer</label>
                             <input type="number" name="avgcookiespercust" required />
-
-                            <p id="avgcookieserror"></p>
 
                             <input type="submit" name="submit" value="Add New Store">
                         </fieldset>
                     </form>
                 </section>            
-            </main>
+            <section id="cookie-section">
+            </section>
+
+        </main>
 
         <script src = "app.js"></script>
     </body>

@@ -78,26 +78,51 @@ p.centered {
     text-align: center;
 }
 
-td:first-child {
+#cookie-table {
+    border-collapse: separate;
+}
+
+#cookie-table thead {
+    background-color: rgb(69, 113, 172);
+}
+
+#cookie-table tr:nth-child(even) {
+    background-color: rgb(69, 113, 172);
+}
+
+#cookie-table tr:nth-child(odd) {
+    background-color: rgb(160, 178, 202);
+}
+
+#cookie-table td:first-child {
     font-weight: bold;
 }
 
-th, td {
+#cookie-table th, td {
     border: 1px solid black;
-    padding: .5em;
-    background-color: rgb(69, 125, 198);
+    padding: 3px;
 }
 
 form {
     margin-bottom: 2em;
-    width: 10%;
 }
 
-form label {
+input {
     float: left;
+    padding: .40em;
+    margin-right: 3em;
 }
 
-form input {
-    float:left;
-    margin-bottom: 1em;
+input[type="number"] {
+    width: 3em;
+}
+
+label {
+    float: left;
+    margin-right: 3px;
+}
+
+#cookie-table tfoot {
+    background-color: rgb(69, 113, 172);
+    font-weight: bold;
 }
