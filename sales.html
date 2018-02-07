@@ -16,18 +16,26 @@
                             <legend>New Store</legend>
     
                             <label>Store Location</label>
-                            <input type="text" name="store-location" />
+                            <input type="text" name="storelocation" required/>
+
+                            <p id="locationerror"></p>
     
-                            <label>Minimum Customers</label>
-                            <input type="text" name="min-cust" />
-     
-                            <label>Maximum Customers</label>
-                            <input type="text" name="max-cust" />
-     
-                            <label>Average Cookies Per Customer</label>
-                            <input type="text" name="avg-cookies-per-cust" />
-    
-                            <input type="submit" name="submit-button" value="Add New Store">
+                            <label>Minimum Customers (Must be a number)</label>
+                            <input type="number" name="mincust" required/>
+
+                            <p id="mincusterror"></p>
+
+                            <label>Maximum Customers (Must be a number)</label>
+                            <input type="number" name="maxcust" required />
+
+                            <p id="maxcusterror"></p>
+
+                            <label>Avg. Cookies Per Customer (Must be a number)</label>
+                            <input type="number" name="avgcookiespercust" required />
+
+                            <p id="avgcookieserror"></p>
+
+                            <input type="submit" name="submit" value="Add New Store">
                         </fieldset>
                     </form>
                 </section>            

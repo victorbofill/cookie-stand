@@ -44,6 +44,11 @@ const createTableFooter = function () {
     }
 };
 
+const removeTableFooter = function () {
+    const table = document.getElementById('cookie-table');
+    table.removeChild('tfoot');
+}
+
 function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
     this.storeName = storeName;
     this.minCust = minCust;
@@ -99,6 +104,24 @@ const activateStore = function(object) {
     object.populateCookiesArray();
     object.render();
 };
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', function () {
+    console.log('Submitted!');
+    event.preventDefault();
+
+    const newStore = new Store(
+        this.storelocation.value,
+        this.mincust.value,
+        this.maxcust.value,
+        this.avgcookiespercust.value);
+
+    activateStore(newStore);
+    removeTableFooter();
+    createTableFooter();
+});
+
 
 const storePDX = new Store('PDX Airport', 23, 65, 6.3);
 const storePioneer = new Store('Pioneer Square', 3, 24, 1.2);
