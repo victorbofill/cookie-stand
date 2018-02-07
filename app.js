@@ -56,25 +56,27 @@ function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
 };
 
 Store.prototype.calcCookiesHour = function() {
-    let totalCookiesThisHour = 0;
+    let totalCookies = 0;
 
     for (let i = 0; i < 15; i++) {
         const min = Math.ceil(this.minCust);
         const max = Math.floor(this.maxCust);
         const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         const estimation = Math.floor(randomNumber * this.avgCookiesPerCust);
-        this.estCookiesPerHour[i] = estimation;
-        totalCookiesThisHour += this.estCookiesPerHour[i];
-        hourTotal[(i + 1)] += randomNumber;
+
+        const cookiesPerHour = estimation;
+        this.estCookiesPerHour[i] = cookiesPerHour;
+        totalCookies += this.estCookiesPerHour[i];
+        hourTotal[(i + 1)] += cookiesPerHour;
     }
 
-    this.estCookiesPerHour.push(totalCookiesThisHour);
+    this.estCookiesPerHour.push(totalCookies);
 };
 
 Store.prototype.calcEmployeesHour = function() {
     for (let i = 1; i < this.employees.length ; i++) {
         const calcEmployees = Math.ceil(this.estCookiesPerHour[(i - 1)] / 20);
-        if ((calcEmployees - 2) > 2) {
+        if (calcEmployees > 2) {
             this.employees[i] = calcEmployees;
         }
     }
