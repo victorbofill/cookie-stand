@@ -87,3 +87,17 @@ th, td {
     padding: .5em;
     background-color: rgb(69, 125, 198);
 }
+
+form {
+    margin-bottom: 2em;
+    width: 10%;
+}
+
+form label {
+    float: left;
+}
+
+form input {
+    float:left;
+    margin-bottom: 1em;
+}
