@@ -91,7 +91,7 @@ p.centered {
 }
 
 #cookie-table tr:nth-child(odd) {
-    background-color: rgb(69, 125, 198);
+    background-color: rgb(160, 178, 202);
 }
 
 #cookie-table td:first-child {
@@ -100,7 +100,26 @@ p.centered {
 
 #cookie-table th, td {
     border: 1px solid black;
+    padding: 3px;
+}
+
+form {
+    margin-bottom: 2em;
+}
+
+input {
+    float: left;
     padding: .40em;
+    margin-right: 3em;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+label {
+    float: left;
+    margin-right: 3px;
 }
 
 #cookie-table tfoot {
