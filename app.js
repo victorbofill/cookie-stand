@@ -50,7 +50,7 @@ function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
     this.maxCust = maxCust;
     this.avgCookiesPerCust = avgCookiesPerCust;
     this.estCookiesPerHour = [];
-    this.employees = [];
+    this.employees = ['Employees per hour',2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
 };
 
 Store.prototype.calcCookiesHour = function() {
@@ -74,8 +74,11 @@ Store.prototype.populateCookiesArray = function() {
 };
 
 Store.prototype.calcEmployeesHour = function() {
-    for (let i = 0; i < hourTotal.length; i++) {
-        this.employees[i] = 2 + ((hourTotal[i] / 20) - (hourTotal[i]) % 20);
+    for (let i = 1; i < this.employees.length ; i++) {
+        const calcEmployees = Math.ceil(this.estCookiesPerHour[(i - 1)] / 20);
+        if ((calcEmployees - 2) > 2) {
+            this.employees[i] = calcEmployees;
+        }
     }
 };
 
@@ -95,9 +98,27 @@ Store.prototype.render = function () {
     }
 };
 
-const activateStore = function(object) {
+Store.prototype.renderEmployees = function () {
+    const cookieSection = document.getElementById('cookie-table');
+    const newTableRow = document.createElement('tr');
+    cookieSection.appendChild(newTableRow);
+
+    let newCell = document.createElement('td');
+    newTableRow.appendChild(newCell);
+    newCell.textContent = this.employees[0];
+
+    for (let i = 0; i < 15; i++) {
+        newCell = document.createElement('td');
+        newTableRow.appendChild(newCell);
+        newCell.textContent = this.employees[i + 1];
+    }
+};
+
+const renderStore = function(object) {
     object.populateCookiesArray();
     object.render();
+    object.calcEmployeesHour();
+    object.renderEmployees();
 };
 
 const storePDX = new Store('PDX Airport', 23, 65, 6.3);
@@ -109,11 +130,11 @@ const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 const buildCookieTable = function() {
     createTable('cookie-table');
     createTableHeader();
-    activateStore(storePDX);
-    activateStore(storePioneer);
-    activateStore(storePowells);
-    activateStore(storeStJohns);
-    activateStore(storeWaterfront);
+    renderStore(storePDX);
+    renderStore(storePioneer);
+    renderStore(storePowells);
+    renderStore(storeStJohns);
+    renderStore(storeWaterfront);
     createTableFooter();
 };
 

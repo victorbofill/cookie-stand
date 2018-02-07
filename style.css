@@ -78,12 +78,32 @@ p.centered {
     text-align: center;
 }
 
-td:first-child {
+#cookie-table {
+    border-collapse: separate;
+}
+
+#cookie-table thead {
+    background-color: rgb(69, 113, 172);
+}
+
+#cookie-table tr:nth-child(even) {
+    background-color: rgb(69, 113, 172);
+}
+
+#cookie-table tr:nth-child(odd) {
+    background-color: rgb(69, 125, 198);
+}
+
+#cookie-table td:first-child {
     font-weight: bold;
 }
 
-th, td {
+#cookie-table th, td {
     border: 1px solid black;
-    padding: .5em;
-    background-color: rgb(69, 125, 198);
+    padding: .40em;
+}
+
+#cookie-table tfoot {
+    background-color: rgb(69, 113, 172);
+    font-weight: bold;
 }
