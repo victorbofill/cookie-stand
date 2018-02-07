@@ -1,107 +1,113 @@
 'use strict';
 
-const hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm', 'Total']
+const hours = [
+    '', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm',
+    '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
+];
 
-let storePDX = {
-    storeName: 'PDX Airport',
-    minCust: 23,
-    maxCust: 65,
-    avgCookiesPerCust: 6.3,
-    estCookiesPerHour: [],
-    calcCookiesHour: function () {
-        let min = Math.ceil(this.minCust);
-        let max = Math.floor(this.maxCust);
-        let randomNumber = Math.floor(Math.random() * (max - min +1)) + min;
-        return Math.floor(randomNumber * this.avgCookiesPerCust);
+const hourTotal = ['Totals By Hour',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+const createTable = function() {
+    const cookieSection = document.getElementById('cookie-section');
+    const table = document.createElement('table');
+    cookieSection.appendChild(table);
+    table.setAttribute('id', 'cookie-table');
+};
+
+const createTableHeader = function() {
+    const table = document.getElementById('cookie-table');
+    const tableHead = document.createElement('thead');
+    table.appendChild(tableHead);
+
+    const tableRow = document.createElement('tr');
+    tableHead.appendChild(tableRow);
+
+    for (let i = 0; i < hours.length; i++) {
+        const tableCell = document.createElement('th');
+        tableHead.appendChild(tableCell);
+        tableCell.textContent = hours[i];
     }
 };
 
-let storePioneer = {
-    storeName: 'Pioneer Square',
-    minCust: 3,
-    maxCust: 24,
-    avgCookiesPerCust: 1.2,
-    estCookiesPerHour: [],
-    calcCookiesHour: function () {
-        let min = Math.ceil(this.minCust);
-        let max = Math.floor(this.maxCust);
-        let randomNumber = Math.floor(Math.random() * (max - min +1)) + min;
-        return Math.floor(randomNumber * this.avgCookiesPerCust);
-    }
-}
+const createTableFooter = function () {
+    const table = document.getElementById('cookie-table');
+    const tableFoot = document.createElement('tfoot');
+    table.appendChild(tableFoot);
 
-let storePowells = {
-    storeName: 'Powell\'s',
-    minCust: 11,
-    maxCust: 38,
-    avgCookiesPerCust: 3.7,
-    estCookiesPerHour: [],
-    calcCookiesHour: function () {
-        let min = Math.ceil(this.minCust);
-        let max = Math.floor(this.maxCust);
-        let randomNumber = Math.floor(Math.random() * (max - min +1)) + min;
-        return Math.floor(randomNumber * this.avgCookiesPerCust);
-    }
-}
+    const tableRow = document.createElement('tr');
+    tableFoot.appendChild(tableRow);
 
-let storeStJohns = {
-    storeName: 'St. John\'s',
-    minCust: 20,
-    maxCust: 38,
-    avgCookiesPerCust: 2.3,
-    estCookiesPerHour: [],
-    calcCookiesHour: function () {
-        let min = Math.ceil(this.minCust);
-        let max = Math.floor(this.maxCust);
-        let randomNumber = Math.floor(Math.random() * (max - min +1)) + min;
-        return Math.floor(randomNumber * this.avgCookiesPerCust);
+    for (let i = 0; i < hourTotal.length; i++) {
+        const tableCell = document.createElement('td');
+        tableFoot.appendChild(tableCell);
+        tableCell.textContent = hourTotal[i];
     }
-}
+};
 
-let storeWaterfront = {
-    storeName: 'Waterfront',
-    minCust: 2,
-    maxCust: 16,
-    avgCookiesPerCust: 4.6,
-    estCookiesPerHour: [],
-    calcCookiesHour: function () {
-        let min = Math.ceil(this.minCust);
-        let max = Math.floor(this.maxCust);
-        let randomNumber = Math.floor(Math.random() * (max - min +1)) + min;
-        return Math.floor(randomNumber * this.avgCookiesPerCust);
-    }
-}
+function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
+    this.storeName = storeName;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.avgCookiesPerCust = avgCookiesPerCust;
+    this.estCookiesPerHour = [];
+};
 
-const createCookiesList = function(object) {
+Store.prototype.calcCookiesHour = function() {
+    const min = Math.ceil(this.minCust);
+    const max = Math.floor(this.maxCust);
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(randomNumber * this.avgCookiesPerCust);
+};
+
+Store.prototype.populateCookiesArray = function() {
     let totalCookies = 0;
 
     for (let i = 0; i < 15; i++) {
-        object.estCookiesPerHour[i] = object.calcCookiesHour();
-        totalCookies += object.estCookiesPerHour[i];
+        const cookiesPerHour = this.calcCookiesHour();
+        this.estCookiesPerHour[i] = cookiesPerHour;
+        totalCookies += this.estCookiesPerHour[i];
+        hourTotal[(i + 1)] += cookiesPerHour;
     }
 
-    object.estCookiesPerHour.push(totalCookies);
+    this.estCookiesPerHour.push(totalCookies);
+};
 
-    const cookieSection = document.getElementById('cookiesection');
+Store.prototype.render = function () {
+    const cookieSection = document.getElementById('cookie-table');
+    const newTableRow = document.createElement('tr');
+    cookieSection.appendChild(newTableRow);
 
-    const newStoreName = document.createElement('p');
-    newStoreName.textContent = object.storeName;
-    cookieSection.appendChild(newStoreName);
+    let newCell = document.createElement('td');
+    newTableRow.appendChild(newCell);
+    newCell.textContent = this.storeName;
 
-    const newUl = document.createElement('ul');
-    cookieSection.appendChild(newUl);
-
-    const liArray = [];
-    for (let i = 0; i < 16; i++) {
-        liArray.push(object.estCookiesPerHour[i]);
-        const newLi = document.createElement('li');
-        newLi.textContent = hours[i] + ': ' + object.estCookiesPerHour[i] + ' cookies';
-        newUl.appendChild(newLi);
+    for (let i = 0; i < this.estCookiesPerHour.length; i++) {
+        newCell = document.createElement('td');
+        newTableRow.appendChild(newCell);
+        newCell.textContent = this.estCookiesPerHour[i];
     }
-}
+};
 
-createCookiesList(storePDX);
-createCookiesList(storePioneer);
-createCookiesList(storePowells);
-createCookiesList(storeStJohns);
-createCookiesList(storeWaterfront);
+const activateStore = function(object) {
+    object.populateCookiesArray();
+    object.render();
+};
+
+const storePDX = new Store('PDX Airport', 23, 65, 6.3);
+const storePioneer = new Store('Pioneer Square', 3, 24, 1.2);
+const storePowells = new Store('Powell\'s', 11, 38, 3.7);
+const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
+const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
+
+const buildTable = function() {
+    createTable();
+    createTableHeader();
+    activateStore(storePDX);
+    activateStore(storePioneer);
+    activateStore(storePowells);
+    activateStore(storeStJohns);
+    activateStore(storeWaterfront);
+    createTableFooter();
+};
+
+buildTable();
