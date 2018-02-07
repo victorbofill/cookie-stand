@@ -75,12 +75,6 @@ section.main-section article {
     border-radius: 10px;
 }
 
-<<<<<<< Updated upstream
-li {
-    list-style-type: circle;
-    font-size: 2.5em;
-}
-=======
 section.main-section h2 {
     font-family: 'Lobster', cursive;
     text-align: center;
@@ -102,4 +96,3 @@ th, td {
     border: 1px solid black;
     padding: .5em;
 }
->>>>>>> Stashed changes
