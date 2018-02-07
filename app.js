@@ -7,11 +7,11 @@ const hours = [
 
 const hourTotal = ['Totals By Hour',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
-const createTable = function() {
+const createTable = function(id) {
     const cookieSection = document.getElementById('cookie-section');
     const table = document.createElement('table');
     cookieSection.appendChild(table);
-    table.setAttribute('id', 'cookie-table');
+    table.setAttribute('id', id);
 };
 
 const createTableHeader = function() {
@@ -50,6 +50,7 @@ function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
     this.maxCust = maxCust;
     this.avgCookiesPerCust = avgCookiesPerCust;
     this.estCookiesPerHour = [];
+    this.employees = [];
 };
 
 Store.prototype.calcCookiesHour = function() {
@@ -70,6 +71,12 @@ Store.prototype.populateCookiesArray = function() {
     }
 
     this.estCookiesPerHour.push(totalCookies);
+};
+
+Store.prototype.calcEmployeesHour = function() {
+    for (let i = 0; i < hourTotal.length; i++) {
+        this.employees[i] = 2 + ((hourTotal[i] / 20) - (hourTotal[i]) % 20);
+    }
 };
 
 Store.prototype.render = function () {
@@ -99,8 +106,8 @@ const storePowells = new Store('Powell\'s', 11, 38, 3.7);
 const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
 const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 
-const buildTable = function() {
-    createTable();
+const buildCookieTable = function() {
+    createTable('cookie-table');
     createTableHeader();
     activateStore(storePDX);
     activateStore(storePioneer);
@@ -110,4 +117,4 @@ const buildTable = function() {
     createTableFooter();
 };
 
-buildTable();
+buildCookieTable();
