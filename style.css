@@ -126,3 +126,38 @@ label {
     background-color: rgb(69, 113, 172);
     font-weight: bold;
 }
+
+#custom-font {
+    width: 50%;
+}
+
+.color-palette {
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: .5em;
+}
+
+.color-palette p {
+    font-weight: bold;
+    text-align: center;
+}
+
+#palette-reddish {
+    background-color: rgb(172, 72, 60);
+}
+
+#palette-yellow {
+    background-color: rgb(228, 250, 137);
+}
+
+#palette-salmon {
+    background-color: rgb(249, 126, 112);
+}
+
+#palette-lightblue {
+    background-color: rgb(69, 125, 198);
+}
+
+#palette-darkblue {
+    background-color: rgb(69, 113, 172);
+}
