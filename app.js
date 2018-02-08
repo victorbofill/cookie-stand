@@ -5,7 +5,7 @@ const hours = [
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
 ];
 
-const hourTotal = ['Total Cookies Needed Per Hour',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let hourTotal = ['Total Cookies Needed Per Hour',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 const createTable = function(id) {
     const cookieSection = document.getElementById('cookie-section');
@@ -62,9 +62,8 @@ Store.prototype.calcCookiesHour = function() {
         const min = Math.ceil(this.minCust);
         const max = Math.floor(this.maxCust);
         const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        const estimation = Math.floor(randomNumber * this.avgCookiesPerCust);
+        const cookiesPerHour = Math.floor(randomNumber * this.avgCookiesPerCust);
 
-        const cookiesPerHour = estimation;
         this.estCookiesPerHour[i] = cookiesPerHour;
         totalCookies += this.estCookiesPerHour[i];
         hourTotal[(i + 1)] += cookiesPerHour;
