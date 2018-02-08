@@ -1,5 +1,13 @@
 'use strict';
 
+
+/*
+
+code review goal: find out how we're updating the hourly totals of cookies when we add a new store!
+
+
+*/
+
 const hours = [
     '', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm',
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
@@ -18,6 +26,7 @@ const createTable = function(id) {
 
     const tableRow = document.createElement('tr');
     tableHead.appendChild(tableRow);
+    // console.log('this table row is: ', tableRow);
 
     for (let i = 0; i < hours.length; i++) {
         const tableCell = document.createElement('th');
@@ -26,6 +35,8 @@ const createTable = function(id) {
     }
 };
 
+// step 1: we found where the row is being created
+// this function creates the footer row
 const createTableFooter = function () {
     const table = document.getElementById('cookie-table');
     const tableFoot = document.createElement('tfoot');
@@ -33,11 +44,14 @@ const createTableFooter = function () {
 
     const tableRow = document.createElement('tr');
     tableFoot.appendChild(tableRow);
+    // console.log('this row is:', tableRow);
 
     for (let i = 0; i < hourTotal.length; i++) {
         const tableCell = document.createElement('td');
-        tableFoot.appendChild(tableCell);
+        tableRow.appendChild(tableCell);
         tableCell.textContent = hourTotal[i];
+        // step 2: we found where the relevant data is being held
+        // hourTotal = where we're getting the updated data from
     }
 };
 
@@ -62,12 +76,17 @@ Store.prototype.calcCookiesHour = function() {
         const min = Math.ceil(this.minCust);
         const max = Math.floor(this.maxCust);
         const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        const estimation = Math.floor(randomNumber * this.avgCookiesPerCust);
+        const cookiesPerHour = Math.floor(randomNumber * this.avgCookiesPerCust);
+        // cookesPerHour = 201
 
-        const cookiesPerHour = estimation;
-        this.estCookiesPerHour[i] = cookiesPerHour;
-        totalCookies += this.estCookiesPerHour[i];
-        hourTotal[(i + 1)] += cookiesPerHour;
+        // const cookiesPerHour = estimation;
+        this.estCookiesPerHour[i] = cookiesPerHour; // estCookiesPerHour = [201]
+        totalCookies += this.estCookiesPerHour[i]; // totalCookies = 201
+        // totalCookies = totalCookies + 201;
+
+        // step 5: we found the line that updates the hourTotal data!
+        // this is where we update our hourTotal array!
+        hourTotal[(i + 1)] += cookiesPerHour; // hourTotal = [211]
     }
 
     this.estCookiesPerHour.push(totalCookies);
@@ -112,6 +131,7 @@ Store.prototype.render = function () {
 };
 
 const renderStore = function(object) {
+    // step 4: we found the function that changes the data in our hourTotal array
     object.calcCookiesHour();
     object.calcEmployeesHour();
     object.render();
@@ -124,13 +144,21 @@ form.addEventListener('submit', function () {
     event.preventDefault();
 
     const newStore = new Store(
-        this.storelocation.value,
+        form.storelocation.value,
         this.mincust.value,
         this.maxcust.value,
-        this.avgcookiespercust.value);
+        this.avgcookiespercust.value
+    );
 
+    
+    // possibly where data is updated?
     renderStore(newStore);
+    
+    // we assume removes footer so we can add it again
     removeTableFooter();
+
+    // step 3: we found where the function that adds the data to our html is called
+    // calling the function that adds info to footer
     createTableFooter();
 });
 
