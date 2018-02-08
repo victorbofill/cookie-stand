@@ -80,20 +80,34 @@ p.centered {
     text-align: center;
 }
 
+#cookie-section {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1em;
+    background-color: #B63224;
+}
+
 #cookie-table {
     border-collapse: separate;
+    border-spacing: .2em 1em;
 }
 
 #cookie-table thead {
-    background-color: rgb(69, 113, 172);
+    font-size: 1.2em;
 }
 
 #cookie-table tr:nth-child(even) {
     background-color: rgb(69, 113, 172);
+    font-size: 1.1em;
+}
+
+#cookie-table tr:nth-child(even) td {
+    box-shadow: 0px 5px 5px;
 }
 
 #cookie-table tr:nth-child(odd) {
     background-color: rgb(160, 178, 202);
+    font-style: italic;
 }
 
 #cookie-table td:first-child {
@@ -102,7 +116,17 @@ p.centered {
 
 #cookie-table th, td {
     border: 1px solid black;
-    padding: 3px;
+    padding: 4px;
+}
+
+#cookie-table tfoot {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#cookie-table tfoot td {
+    box-shadow: 0px 5px 5px;
+    background-color: rgb(69, 113, 172);
 }
 
 form {
@@ -122,11 +146,6 @@ input[type="number"] {
 label {
     float: left;
     margin-right: 3px;
-}
-
-#cookie-table tfoot {
-    background-color: rgb(69, 113, 172);
-    font-weight: bold;
 }
 
 #custom-font {
