@@ -1,5 +1,6 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: lavender;
 }
 
 .float-left {
@@ -20,6 +21,8 @@ body {
 
 header {
     border: 2px black solid;
+    background-color: white;
+    border-radius: 5px;
 }
 
 #header-img {
@@ -70,14 +73,14 @@ h1 {
 }
 
 section {
-    margin: 1em auto 0 auto;
-    padding: 1em;
     border-radius: 25px;
-    overflow: hidden;
 }
 
 section:not(#cookie-section) {
     max-width: 75%;
+    margin: 1em auto 0 auto;
+    padding: 1em;
+    overflow: hidden;
 }
 
 section img:not(#header-img) {
@@ -94,7 +97,7 @@ article {
     border: 3px solid #921D5F;
     border-radius: 10px;
     box-shadow: 5px 5px 10px;
-    background-color: white;
+    background-color: darkgrey;
 }
 
 article h2 {
@@ -111,14 +114,14 @@ article p {
     margin: .5em;
 }
 
-article li {
+#locations li {
     list-style-type: none;
 }
 
-article li:nth-child(odd) {
+#locations li:nth-child(odd) {
 }
 
-article li:nth-child(even) {
+#locations li:nth-child(even) {
     font-style: italic;
     margin: 0 2em 1em 1em;
 }
@@ -136,10 +139,15 @@ p.centered {
 #cookie-table {
     border-collapse: separate;
     border-spacing: .2em 1em;
+    font-family: sans-serif;
 }
 
 #cookie-table thead {
     font-size: 1.2em;
+}
+
+#cookie-table th {
+    background-color: darkgray;
 }
 
 #cookie-table tr:nth-child(even) {
@@ -148,10 +156,12 @@ p.centered {
 
 #cookie-table tr:nth-child(even) td {
     box-shadow: 0px 5px 5px;
+    background-color: darkgray;
 }
 
 #cookie-table tr:nth-child(odd) {
     font-style: italic;
+    background-color: white;
 }
 
 #cookie-table td:first-child {
@@ -170,6 +180,7 @@ p.centered {
 
 #cookie-table tfoot td {
     box-shadow: 0px 5px 5px;
+    background-color: darkgray;
 }
 
 form {
