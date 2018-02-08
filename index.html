@@ -9,16 +9,31 @@
     <body>
         <main>
             <header>
-                <div class="image-container">
-                    <img src="images/salmon.png">
+                <div id="header-image-container">
+                    <img src="images/salmon.png" id="header-img">
+                </div>
+
+                <div id="header-image-container2">
+                        <img src="images/chinook.jpg" id="header-img2">
                 </div>
 
                 <h1>Salmon Cookies</h1>
+    
+                <ul id="header-links">
+                    <li><a href="#hours">Hours</a></li>
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#story">Story</a></li>
+                    <li><a href="#merch">Merchandise</a></li>
+                </ul>
             </header>
 
-            <section class="main-section">
-                <article>
-                    <h2>Hours</h2>
+            <section>
+                <img src="images/cutter.jpeg" class="float-right" />
+
+                <article  class="float-left">
+
+                    <h2 id="hours">Hours</h2>
 
                     <p class="centered">
                         6am - 9pm<br/>
@@ -27,22 +42,32 @@
 
                 </article>
 
-                <article>
-                    <h2>Locations</h2>
+                <article class="float-left  clear-left">
+                    <h2 id="locations">Locations</h2>
+
+                    <ul class="float-left">
+                        <li>Portland Airport</li>
+                        <li>555.123.4567</li>
+                        <li>Pioneer Square</li>
+                        <li>555.987.6543</li>
+                    </ul>
 
                     <ul>
-                        <li>Portland Airport</li>
-                        <li>Pioneer Square</li>
                         <li>Powell's Books (Downtown)</li>
+                        <li>555.911.1337</li>
                         <li>St. John's</li>
-                        <li>Waterfront</li>
+                        <li>555.867.5309</li>
+                        <li class="clear-left">Waterfront</li>
+                        <li>555.314.1592</li>
                     </ul>
                 </article>
             </section>
 
-            <section class="main-section">
-                <article>
-                    <h2>Menu</h2>
+            <section>
+                <img src="images/frosted-cookie.jpg" class="float-left">
+
+                <article class="float-right">
+                    <h2 id="menu">Menu</h2>
 
                     <ul>
                         <li>Cookie shaped like a fish</li>
@@ -52,9 +77,11 @@
                 </article>
             </section>
 
-            <section class="main-section">
-                <article>
-                    <h2>Story</h2>
+            <section>
+                <img id="family-img" class="float-right" src="images/family.jpg" />
+
+                <article class="float-left">
+                    <h2 id="story">Story</h2>
 
                     <p>
                         Our creator and owner, Pat Smith, combined two signature Seattle icons:
@@ -70,6 +97,22 @@
                         The cookies are not only shaped like salmon, but are actually made with their namesake fish 
                         (though the fish is ground up so fine that you can't even taste it!). They are the ideal match
                         for a steaming cup of coffee on a PNW morning. Or PNW afternoon... Or any time at all!
+                    </p>
+                </article>
+            </section>
+
+            <section>
+                <img class="merch-img" class="float-left" src="images/shirt.jpg">
+
+                <article class="float-right">
+                    <h2 id="merch">Merchendise</h2>
+
+                    <p>
+                        Our Airport and Powell's locations sell Salmon Cookies merchandise, including t-shirts, mugs, shot glasses, gift cards, and much more!
+                    </p>
+                    
+                    <p>
+                        All of our merchandise is hand crafted or shipped from local, fair trade, organic, sustainable, sources.
                     </p>
                 </article>
             </section>
