@@ -21,7 +21,7 @@ const createTable = function(id) {
 
     for (let i = 0; i < hours.length; i++) {
         const tableCell = document.createElement('th');
-        tableHead.appendChild(tableCell);
+        tableRow.appendChild(tableCell);
         tableCell.textContent = hours[i];
     }
 };
@@ -36,7 +36,7 @@ const createTableFooter = function () {
 
     for (let i = 0; i < hourTotal.length; i++) {
         const tableCell = document.createElement('td');
-        tableFoot.appendChild(tableCell);
+        tableRow.appendChild(tableCell);
         tableCell.textContent = hourTotal[i];
     }
 };
