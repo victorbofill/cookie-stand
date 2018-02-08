@@ -1,10 +1,10 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: rgb(228, 250, 137); 
+    background-color: #F9B770; 
 }
 
 header {
-    background-color: rgb(249, 126, 112);
+    background-color: #F97D70;
     height: 13em;
     border-radius: 25px;
     border: 2px black solid;
@@ -46,28 +46,30 @@ ul.header-links {
 
 section.main-section {
     float: left;
-    border-radius: 10px;
     border: 1px solid black;
-    background-color: rgb(172, 72, 60);
+    background-color: #B63224;
     width: 30%;
     margin: 1em 1em;
+    border-radius: 15px;
 }
 
 section.main-section article {
-    background-color: rgb(69, 125, 198);
+    background-color: #F97D70;
     width: 75%;
-    margin: .5em auto;
-    border: 1px solid black;
+    margin: 1em auto;
+    border: 3px solid #921D5F;
     border-radius: 10px;
+    box-shadow: 5px 5px 10px;
 }
 
 section.main-section h2 {
     font-family: 'Lobster', cursive;
     text-align: center;
     font-size: 1.75em;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #921D5F;
     width: 50%;
     margin: 0 auto;
+    color: #921D5F;
 }
 
 section.main-section p {
@@ -142,22 +144,26 @@ label {
     text-align: center;
 }
 
-#palette-reddish {
-    background-color: rgb(172, 72, 60);
-}
-
-#palette-yellow {
-    background-color: rgb(228, 250, 137);
-}
-
 #palette-salmon {
-    background-color: rgb(249, 126, 112);
+    background-color: #F97D70;
 }
 
-#palette-lightblue {
-    background-color: rgb(69, 125, 198);
+#palette-lightbrown {
+    background-color: #F9B770;
 }
 
-#palette-darkblue {
-    background-color: rgb(69, 113, 172);
+#palette-purple {
+    background-color: #C85A98;
+}
+
+#palette-darkpurple {
+    background-color: #921D5F;
+}
+
+#palette-reddish {
+    background-color: #B63224;
+}
+
+#palette-font {
+    background-color: rgb(228, 250, 137);
 }
