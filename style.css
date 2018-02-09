@@ -30,19 +30,13 @@ p.centered {
 header {
     background-color: white;
     border: 2px black solid;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 #header-img-salmon {
     position: relative;
     left: -530px;
     top: -45px;
-}
-
-.header-image-container {
-    overflow: hidden;
-    width: 260px;
-    height: 192px;
 }
 
 h1 {
@@ -115,7 +109,6 @@ form {
 }
 
 input {
-    float: left;
     padding: .40em;
     margin-right: 3em;
 }
@@ -125,8 +118,13 @@ input[type="number"] {
 }
 
 label {
-    float: left;
     margin-right: 3px;
+}
+
+div.header-image-container {
+    overflow: hidden;
+    width: 260px;
+    border-radius: 15px;
 }
 
 div.color-palette {
@@ -150,60 +148,60 @@ div.color-palette p {
 }
 
 #sales-table {
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 1em;
-}
-
-#sales-table {
     border-collapse: separate;
-    border-spacing: .2em 1em;
+    border-spacing: 0 1em;
     font-family: sans-serif;
 }
 
-#sales-table thead {
-    font-size: 1.2em;
+#sales-table th {
+    border-left: 1px solid black;
+}
+
+#sales-table th, td {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#sales-table thead tr {
+    box-shadow: 0px 5px 5px;    
 }
 
 #sales-table th {
     background-color: darkgray;
 }
 
-#sales-table tr:nth-child(even) {
-    font-size: 1em;
-}
-
-#sales-table tr:nth-child(even) td {
-    box-shadow: 0px 5px 5px;
-    background-color: darkgray;
-}
-
-#sales-table tr:nth-child(odd) {
-    font-style: italic;
-    background-color: white;
-}
-
 #sales-table td:first-child {
     font-weight: bold;
 }
 
-#sales-table th, td {
-    border: 1px solid black;
-    padding: 4px;
+#sales-table td:not(:first-child) {
+    text-align: center;
+}
+
+#sales-table tr:nth-child(even) {
+    background-color: darkgray;
+    box-shadow: 0px 5px 5px;
+}
+
+#sales-table tr:nth-child(even) td:last-child {
+    font-weight: bold;
+}
+
+#sales-table tr:nth-child(odd) {
+    background-color: white;
+    font-style: italic;
 }
 
 #sales-table tfoot {
     font-weight: bold;
-    font-size: 1.2em;
+}
+
+#sales-table tfoot tr {
+    box-shadow: 0px 5px 5px;
 }
 
 #sales-table tfoot td {
-    box-shadow: 0px 5px 5px;
     background-color: darkgray;
-}
-
-#custom-font {
-    width: 50%;
 }
 
 #palette-salmon {

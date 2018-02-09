@@ -2,8 +2,8 @@
 
 // stores hours of operation
 const hours = [
-    '', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm',
-    '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
+    '', '6a', '7a', '8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p',
+    '5p', '6p', '7p', '8p', 'Daily Location Total'
 ];
 
 const hourTotal = ['Total Cookies Needed Per Hour'];
