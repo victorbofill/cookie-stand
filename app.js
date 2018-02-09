@@ -87,6 +87,16 @@ Store.prototype.calcEmployeesHour = function() {
     }
 };
 
+// updates the info for an already-rendered store
+Store.prototype.updateInfo = function () {
+    const tableRow = document.getElementsByTagName('tr');
+    for (let i = 0; i < tableRow.length; i++) {
+        if (this.storeName === tableRow.child.value) {
+            console.log('Match');            
+        }
+    }
+};
+
 Store.prototype.render = function () {
     const cookieSection = document.getElementById('cookie-table');
     let newTableRow = document.createElement('tr');
@@ -129,15 +139,40 @@ form.addEventListener('submit', function () {
     console.log('Submitted!');
     event.preventDefault();
 
-    const newStore = new Store(
-        this.storelocation.value,
-        this.mincust.value,
-        this.maxcust.value,
-        this.avgcookiespercust.value);
+    let isUpdate = false;
 
-    renderStore(newStore);
-    removeTableFooter();
-    createTableFooter();
+    console.log(isUpdate);
+
+    for (let i = 0; i < renderedStores.length; i++ ) {
+        if ((this.storelocation.value.toLowerCase()) === (renderedStores[i].toLowerCase())) {
+            isUpdate = true;
+            var updatingStore = this.storelocation.value;
+            console.log(updatingStore);
+        }
+    }
+
+    console.log(updatingStore);
+
+    if (isUpdate === false) {
+        const newStore = new Store(
+            this.storelocation.value,
+            this.mincust.value,
+            this.maxcust.value,
+            this.avgcookiespercust.value);
+
+        renderStore(newStore);
+        removeTableFooter();
+        createTableFooter();
+    } else if (isUpdate === true) {
+        // method to re-calculate information
+
+        updatingStore.updateInfo();
+
+        // method to remove and re-publish information
+
+        removeTableFooter();
+        createTableFooter();
+    }
 });
 
 
