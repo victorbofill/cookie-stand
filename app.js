@@ -1,5 +1,6 @@
 'use strict';
 
+// stores hours of operation
 const hours = [
     '', '6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm',
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
@@ -7,6 +8,10 @@ const hours = [
 
 const hourTotal = ['Total Cookies Needed Per Hour'];
 
+// stores all rendered Stores in object form
+const renderedStores = [];
+
+// allows for future alteration of hours of operation
 for (let i = 0; i < (hours.length - 2); i++) {
     hourTotal.push(0);
 }
@@ -56,6 +61,8 @@ function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
     this.maxCust = maxCust;
     this.avgCookiesPerCust = avgCookiesPerCust;
     this.estCookiesPerHour = [];
+    this.cookiesRow;
+    this.employeeRow;
     this.employees = ['Employees per hour',2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
 };
 
@@ -85,9 +92,11 @@ Store.prototype.calcEmployeesHour = function() {
     }
 };
 
+// populates the table with data and stores the tr for each Store in its object
 Store.prototype.render = function () {
     const cookieSection = document.getElementById('cookie-table');
     let newTableRow = document.createElement('tr');
+    this.cookiesRow = newTableRow;
     cookieSection.appendChild(newTableRow);
 
     let newCell = document.createElement('td');
@@ -101,6 +110,7 @@ Store.prototype.render = function () {
     }
 
     newTableRow = document.createElement('tr');
+    this.employeeRow = newTableRow;
     cookieSection.appendChild(newTableRow);
 
     newCell = document.createElement('td');
@@ -112,8 +122,11 @@ Store.prototype.render = function () {
         newTableRow.appendChild(newCell);
         newCell.textContent = this.employees[i + 1];
     }
+
+    renderedStores.push(this);
 };
 
+// runs all necessary methods to calcaulte and render a Store
 const renderStore = function(object) {
     object.calcCookiesHour();
     object.calcEmployeesHour();
@@ -122,9 +135,27 @@ const renderStore = function(object) {
 
 const form = document.querySelector('form');
 
+// form to add a new store or update an existing one
 form.addEventListener('submit', function () {
     console.log('Submitted!');
     event.preventDefault();
+
+    // THIS CODE IS INCOMPLETE
+    // It will eventually find the Store being updated and update the table accordingly
+
+    // const tempStoreLocation = this.storelocation.value;
+
+    // if (renderedStores.includes(tempStoreLocation)) {
+    //     function findStoreIndex(store) {
+    //         return store === tempStoreLocation;
+    //     }
+
+    //     const storeIndex = renderedStores.findIndex(findStoreIndex);
+    //     const updatingStore = renderedStores[storeIndex];
+
+    //     console.log(updatingStore);
+
+    // }
 
     const newStore = new Store(
         this.storelocation.value,
@@ -144,14 +175,10 @@ const storePowells = new Store('Powell\'s', 11, 38, 3.7);
 const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
 const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 
-const buildCookieTable = function() {
-    createTable('cookie-table');
-    renderStore(storePDX);
-    renderStore(storePioneer);
-    renderStore(storePowells);
-    renderStore(storeStJohns);
-    renderStore(storeWaterfront);
-    createTableFooter();
-};
-
-buildCookieTable();
+createTable('cookie-table');
+renderStore(storePDX);
+renderStore(storePioneer);
+renderStore(storePowells);
+renderStore(storeStJohns);
+renderStore(storeWaterfront);
+createTableFooter();

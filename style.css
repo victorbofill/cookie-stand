@@ -118,9 +118,6 @@ article p {
     list-style-type: none;
 }
 
-#locations li:nth-child(odd) {
-}
-
 #locations li:nth-child(even) {
     font-style: italic;
     margin: 0 2em 1em 1em;
@@ -151,7 +148,7 @@ p.centered {
 }
 
 #cookie-table tr:nth-child(even) {
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 #cookie-table tr:nth-child(even) td {
