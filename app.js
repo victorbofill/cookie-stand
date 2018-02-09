@@ -5,9 +5,7 @@ const hours = [
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
 ];
 
-let renderedStores = [];
-
-let hourTotal = ['Total Cookies Needed Per Hour'];
+const hourTotal = ['Total Cookies Needed Per Hour'];
 
 for (let i = 0; i < (hours.length - 2); i++) {
     hourTotal.push(0);
@@ -87,16 +85,6 @@ Store.prototype.calcEmployeesHour = function() {
     }
 };
 
-// updates the info for an already-rendered store
-Store.prototype.updateInfo = function () {
-    const tableRow = document.getElementsByTagName('tr');
-    for (let i = 0; i < tableRow.length; i++) {
-        if (this.storeName === tableRow.child.value) {
-            console.log('Match');            
-        }
-    }
-};
-
 Store.prototype.render = function () {
     const cookieSection = document.getElementById('cookie-table');
     let newTableRow = document.createElement('tr');
@@ -130,7 +118,6 @@ const renderStore = function(object) {
     object.calcCookiesHour();
     object.calcEmployeesHour();
     object.render();
-    renderedStores.push(object.storeName);
 };
 
 const form = document.querySelector('form');
@@ -139,40 +126,15 @@ form.addEventListener('submit', function () {
     console.log('Submitted!');
     event.preventDefault();
 
-    let isUpdate = false;
+    const newStore = new Store(
+        this.storelocation.value,
+        this.mincust.value,
+        this.maxcust.value,
+        this.avgcookiespercust.value);
 
-    console.log(isUpdate);
-
-    for (let i = 0; i < renderedStores.length; i++ ) {
-        if ((this.storelocation.value.toLowerCase()) === (renderedStores[i].toLowerCase())) {
-            isUpdate = true;
-            var updatingStore = this.storelocation.value;
-            console.log(updatingStore);
-        }
-    }
-
-    console.log(updatingStore);
-
-    if (isUpdate === false) {
-        const newStore = new Store(
-            this.storelocation.value,
-            this.mincust.value,
-            this.maxcust.value,
-            this.avgcookiespercust.value);
-
-        renderStore(newStore);
-        removeTableFooter();
-        createTableFooter();
-    } else if (isUpdate === true) {
-        // method to re-calculate information
-
-        updatingStore.updateInfo();
-
-        // method to remove and re-publish information
-
-        removeTableFooter();
-        createTableFooter();
-    }
+    renderStore(newStore);
+    removeTableFooter();
+    createTableFooter();
 });
 
 
