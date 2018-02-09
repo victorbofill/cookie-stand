@@ -5,6 +5,8 @@ const hours = [
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
 ];
 
+let renderedStores = [];
+
 let hourTotal = ['Total Cookies Needed Per Hour'];
 
 for (let i = 0; i < (hours.length - 2); i++) {
@@ -118,6 +120,7 @@ const renderStore = function(object) {
     object.calcCookiesHour();
     object.calcEmployeesHour();
     object.render();
+    renderedStores.push(object.storeName);
 };
 
 const form = document.querySelector('form');
