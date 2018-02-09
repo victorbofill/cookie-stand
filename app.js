@@ -17,7 +17,7 @@ for (let i = 0; i < (hours.length - 2); i++) {
 }
 
 const createTable = function(id) {
-    const cookieSection = document.getElementById('cookie-section');
+    const cookieSection = document.getElementById('sales-section');
     const table = document.createElement('table');
     cookieSection.appendChild(table);
     table.setAttribute('id', id);
@@ -36,7 +36,7 @@ const createTable = function(id) {
 };
 
 const createTableFooter = function () {
-    const table = document.getElementById('cookie-table');
+    const table = document.getElementById('sales-table');
     const tableFoot = document.createElement('tfoot');
     table.appendChild(tableFoot);
 
@@ -94,7 +94,7 @@ Store.prototype.calcEmployeesHour = function() {
 
 // populates the table with data and stores the tr for each Store in its object
 Store.prototype.render = function () {
-    const cookieSection = document.getElementById('cookie-table');
+    const cookieSection = document.getElementById('sales-table');
     let newTableRow = document.createElement('tr');
     this.cookiesRow = newTableRow;
     cookieSection.appendChild(newTableRow);
@@ -175,7 +175,7 @@ const storePowells = new Store('Powell\'s', 11, 38, 3.7);
 const storeStJohns = new Store('St. John\'s', 20, 38, 2.3);
 const storeWaterfront = new Store('Waterfront', 2, 16, 4.6);
 
-createTable('cookie-table');
+createTable('sales-table');
 renderStore(storePDX);
 renderStore(storePioneer);
 renderStore(storePowells);
