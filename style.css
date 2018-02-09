@@ -1,97 +1,167 @@
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: rgb(228, 250, 137); 
+    background-color: lavender;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.clear-right {
+    clear:right;
 }
 
 header {
-    background-color: rgb(249, 126, 112);
-    height: 13em;
-    border-radius: 25px;
     border: 2px black solid;
-    margin-top: 2.5em;
+    background-color: white;
+    border-radius: 5px;
 }
 
-header img {
-    position: absolute;
+#header-img {
+    position: relative;
     left: -500px;
     top: -45px;
 }
 
-.image-container {
+#header-image-container {
     overflow: hidden;
-    width: 30%;
-    height: inherit;
-    position: absolute;
+    width: 290px;
+    height: 192px;
+    float: left;
+}
+
+#header-image-container2 {
+    float: right;
+    overflow: hidden;
+    width: 260px;
+    height: 192px;
 }
 
 h1 {
     font-family: 'Lobster', cursive;
-    color: rgb(228, 250, 137);
+    color: salmon;
     text-align: center;
     text-transform: uppercase;
     font-size: 5em;
-    text-shadow: 5px 5px 10px black;
+    text-shadow: 5px 5px 10px purple;
+    -webkit-text-stroke: 2px black;
+    letter-spacing: .1em;
 }
 
-ul.header-links {
+#header-links {
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
-.header-links li {
+#header-links li {
     list-style-type: none;
-    padding: 0 1em;
+    font-size: 2.5em;
+    margin: 0 1em;
 }
 
-section.main-section {
-    float: left;
-    border-radius: 10px;
+#header-links a {
+    color: black;
+    text-decoration: none;
+}
+
+section {
+    border-radius: 25px;
+}
+
+section:not(#cookie-section) {
+    max-width: 75%;
+    margin: 1em auto 0 auto;
+    padding: 1em;
+    overflow: hidden;
+}
+
+section img:not(#header-img) {
+    margin: 1em;
     border: 1px solid black;
-    background-color: rgb(172, 72, 60);
-    width: 30%;
+    max-width: 55%;
+}
+
+article {
+    width: 40%;
     margin: 1em 1em;
-}
-
-section.main-section article {
-    background-color: rgb(69, 125, 198);
-    width: 75%;
-    margin: .5em auto;
-    border: 1px solid black;
+    border-radius: 15px;
+    margin: 1em auto;
+    border: 3px solid #921D5F;
     border-radius: 10px;
+    box-shadow: 5px 5px 10px;
+    background-color: darkgrey;
 }
 
-section.main-section h2 {
+article h2 {
     font-family: 'Lobster', cursive;
     text-align: center;
     font-size: 1.75em;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #921D5F;
     width: 50%;
     margin: 0 auto;
+    color: #921D5F;
 }
 
-section.main-section p {
+article p {
     margin: .5em;
+}
+
+#locations li {
+    list-style-type: none;
+}
+
+#locations li:nth-child(odd) {
+}
+
+#locations li:nth-child(even) {
+    font-style: italic;
+    margin: 0 2em 1em 1em;
 }
 
 p.centered {
     text-align: center;
 }
 
+#cookie-section {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1em;
+}
+
 #cookie-table {
     border-collapse: separate;
+    border-spacing: .2em 1em;
+    font-family: sans-serif;
 }
 
 #cookie-table thead {
-    background-color: rgb(69, 113, 172);
+    font-size: 1.2em;
+}
+
+#cookie-table th {
+    background-color: darkgray;
 }
 
 #cookie-table tr:nth-child(even) {
-    background-color: rgb(69, 113, 172);
+    font-size: 1.1em;
+}
+
+#cookie-table tr:nth-child(even) td {
+    box-shadow: 0px 5px 5px;
+    background-color: darkgray;
 }
 
 #cookie-table tr:nth-child(odd) {
-    background-color: rgb(69, 125, 198);
+    font-style: italic;
+    background-color: white;
 }
 
 #cookie-table td:first-child {
@@ -100,10 +170,73 @@ p.centered {
 
 #cookie-table th, td {
     border: 1px solid black;
-    padding: .40em;
+    padding: 4px;
 }
 
 #cookie-table tfoot {
-    background-color: rgb(69, 113, 172);
     font-weight: bold;
+    font-size: 1.2em;
+}
+
+#cookie-table tfoot td {
+    box-shadow: 0px 5px 5px;
+    background-color: darkgray;
+}
+
+form {
+    margin-bottom: 2em;
+}
+
+input {
+    float: left;
+    padding: .40em;
+    margin-right: 3em;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+label {
+    float: left;
+    margin-right: 3px;
+}
+
+#custom-font {
+    width: 50%;
+}
+
+.color-palette {
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: .5em;
+}
+
+.color-palette p {
+    font-weight: bold;
+    text-align: center;
+}
+
+#palette-salmon {
+    background-color: #F97D70;
+}
+
+#palette-lightbrown {
+    background-color: #F9B770;
+}
+
+#palette-purple {
+    background-color: #C85A98;
+}
+
+#palette-darkpurple {
+    background-color: #921D5F;
+}
+
+#palette-reddish {
+    background-color: #B63224;
+}
+
+#palette-font {
+    background-color: rgb(228, 250, 137);
 }
