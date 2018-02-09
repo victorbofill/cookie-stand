@@ -5,7 +5,7 @@ const hours = [
     '5:00pm', '6:00pm', '7:00pm', '8:00pm', 'Daily Location Total'
 ];
 
-let hourTotal = ['Total Cookies Needed Per Hour'];
+const hourTotal = ['Total Cookies Needed Per Hour'];
 
 for (let i = 0; i < (hours.length - 2); i++) {
     hourTotal.push(0);
