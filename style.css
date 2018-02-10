@@ -62,6 +62,8 @@ h2 {
 .header-links {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .header-links li {
@@ -97,7 +99,7 @@ section.section-column img {
 }
 
 article {
-    background-color: darkgrey;
+    background-color: lavenderblush;
     border: 3px solid #921D5F;
     border-radius: 15px;
     box-shadow: 5px 5px 10px;
@@ -122,9 +124,10 @@ label {
 }
 
 div.header-image-container {
+    border-radius: 15px;
+    height: 12.5em;
     overflow: hidden;
     width: 260px;
-    border-radius: 15px;
 }
 
 div.color-palette {
