@@ -55,6 +55,10 @@ const removeTableFooter = function () {
     tfoot.remove();
 };
 
+const removeTableRow = function (trow) {
+    trow.remove();
+};
+
 function Store(storeName, minCust, maxCust, avgCookiesPerCust) {
     this.storeName = storeName;
     this.minCust = minCust;
@@ -137,37 +141,44 @@ const form = document.querySelector('form');
 
 // form to add a new store or update an existing one
 form.addEventListener('submit', function () {
-    console.log('Submitted!');
     event.preventDefault();
 
-    // THIS CODE IS INCOMPLETE
-    // It will eventually find the Store being updated and update the table accordingly
+    let updatingStore = this.storelocation.value;
 
-    // const tempStoreLocation = this.storelocation.value;
+    for (let i = 0; i < renderedStores.length; i++) {
+        if (updatingStore === renderedStores[i].storeName) {
+            updatingStore = renderedStores[i];
+        }
+    }
 
-    // if (renderedStores.includes(tempStoreLocation)) {
-    //     function findStoreIndex(store) {
-    //         return store === tempStoreLocation;
-    //     }
+    if (renderedStores.includes(updatingStore)) {
+        removeTableRow(updatingStore.cookiesRow);
+        removeTableRow(updatingStore.employeeRow);
+        removeTableFooter();
 
-    //     const storeIndex = renderedStores.findIndex(findStoreIndex);
-    //     const updatingStore = renderedStores[storeIndex];
+        for (let i = 0; i < (updatingStore.estCookiesPerHour.length - 1); i++) {
+            hourTotal[i + 1] -= updatingStore.estCookiesPerHour[i];
+        }
 
-    //     console.log(updatingStore);
+        updatingStore.estCookiesPerHour = [];
 
-    // }
+        renderStore(updatingStore);
+        createTableFooter();
+        updatingStore = 'updated';
+    };
 
-    const newStore = new Store(
-        this.storelocation.value,
-        this.mincust.value,
-        this.maxcust.value,
-        this.avgcookiespercust.value);
+    if (updatingStore != 'updated') {
+        const newStore = new Store(
+            this.storelocation.value,
+            this.mincust.value,
+            this.maxcust.value,
+            this.avgcookiespercust.value);
 
-    renderStore(newStore);
-    removeTableFooter();
-    createTableFooter();
+        renderStore(newStore);
+        removeTableFooter();
+        createTableFooter();
+    }
 });
-
 
 const storePDX = new Store('PDX Airport', 23, 65, 6.3);
 const storePioneer = new Store('Pioneer Square', 3, 24, 1.2);
