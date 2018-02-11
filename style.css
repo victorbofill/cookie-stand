@@ -59,6 +59,12 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    margin: 1em;
+    text-transform: uppercase;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .header-links {
     display: flex;
     justify-content: center;
@@ -98,6 +104,7 @@ section.section-column img {
     max-width: 55%;
 }
 
+
 article {
     background-color: lavenderblush;
     border: 3px solid #921D5F;
@@ -130,17 +137,6 @@ div.header-image-container {
     width: 260px;
 }
 
-div.color-palette {
-    border: solid 1px black;
-    border-radius: 10px;
-    margin: .5em;
-}
-
-div.color-palette p {
-    font-weight: bold;
-    text-align: center;
-}
-
 #locations li {
     list-style-type: none;
 }
@@ -149,6 +145,8 @@ div.color-palette p {
     font-style: italic;
     margin: 0 2em 1em 1em;
 }
+
+/* SALES */
 
 #sales-table {
     border-collapse: separate;
@@ -207,26 +205,60 @@ div.color-palette p {
     background-color: darkgray;
 }
 
+/* STYLE GUIDE */
+section.style-section {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: flex-start;
+}
+
+section.style-section article {
+    margin: 1em 1em;
+}
+
+div.color-palette {
+    border: solid 1px black;
+    border-radius: 10px;
+    margin: .5em;
+    float: left;
+}
+
+div.color-palette p {
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    bottom: -55px;
+}
+
 #palette-salmon {
     background-color: #F97D70;
+    width: 10em;
+    height: 10em;
+    border-radius: 360px;
 }
 
-#palette-lightbrown {
-    background-color: #F9B770;
+#palette-lavender {
+    background-color: lavender;
+    width: 10em;
+    height: 10em;
+    border-radius: 360px;
 }
 
-#palette-purple {
-    background-color: #C85A98;
+#palette-lavenderblush {
+    background-color: lavenderblush;
+    width: 10em;
+    height: 10em;
+    border-radius: 360px;
 }
 
 #palette-darkpurple {
     background-color: #921D5F;
+    width: 10em;
+    height: 10em;
+    border-radius: 360px;
 }
 
-#palette-reddish {
-    background-color: #B63224;
-}
-
-#palette-font {
-    background-color: rgb(228, 250, 137);
+table.typography {
+    empty-cells: hide;
 }
