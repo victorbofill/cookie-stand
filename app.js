@@ -161,6 +161,9 @@ form.addEventListener('submit', function () {
         }
 
         updatingStore.estCookiesPerHour = [];
+        updatingStore.minCust = this.mincust.value;
+        updatingStore.maxCust = this.maxcust.value;
+        updatingStore.avgCookiesPerCust = this.avgcookiespercust.value;
 
         renderStore(updatingStore);
         createTableFooter();
