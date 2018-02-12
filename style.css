@@ -146,6 +146,11 @@ div.header-image-container {
     margin: 0 2em 1em 1em;
 }
 
+footer {
+    text-align: center;
+    font-size: 3em;
+}
+
 /* SALES */
 #sales-table {
     border-collapse: separate;
